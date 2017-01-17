@@ -2,12 +2,15 @@ package si.kamino.gradle.extensions
 
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
+import si.kamino.gradle.extensions.version.AppVersion
+import si.kamino.gradle.extensions.version.ExtendingVersion
+
 /**
  * Created by blazsolar on 02/09/14.
  */
 class VersionExtension {
 
-    private final ConstantVersion appVersion
+    private final AppVersion appVersion
 
     private final NamedDomainObjectContainer<ExtendingVersion> variants
 
@@ -15,14 +18,14 @@ class VersionExtension {
 
     private boolean renameOutputs;
 
-    VersionExtension(ConstantVersion appVersion, NamedDomainObjectContainer<ExtendingVersion> variants,
+    VersionExtension(AppVersion appVersion, NamedDomainObjectContainer<ExtendingVersion> variants,
                      Splits splits) {
         this.appVersion = appVersion;
         this.variants = variants
         this.splits = splits
     }
 
-    def appVersion(Action<ConstantVersion> appVersion) {
+    def appVersion(Action<AppVersion> appVersion) {
         appVersion.execute(this.appVersion)
     }
 
@@ -35,10 +38,10 @@ class VersionExtension {
     }
 
     def renameOutputs(boolean rename) {
-        this.renameOutputs = rename;
+        this.renameOutputs = rename
     }
 
-    ConstantVersion getAppVersion() {
+    AppVersion getAppVersion() {
         return appVersion
     }
 

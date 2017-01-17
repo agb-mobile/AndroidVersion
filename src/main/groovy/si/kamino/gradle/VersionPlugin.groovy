@@ -5,8 +5,8 @@ import org.gradle.api.Project
 import org.gradle.api.execution.TaskExecutionGraph
 import org.gradle.api.execution.TaskExecutionGraphListener
 import org.gradle.internal.reflect.Instantiator
-import si.kamino.gradle.extensions.ConstantVersion
-import si.kamino.gradle.extensions.ExtendingVersion
+import si.kamino.gradle.extensions.version.AppVersion
+import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.extensions.Splits
 import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.task.BuildVersionTask
@@ -42,11 +42,19 @@ class VersionPlugin implements Plugin<Project> {
 
     private void createExtensions() {
 
-        Splits splits = instantiator.newInstance(Splits, project.container(ExtendingVersion),
-                project.container(ExtendingVersion))
+        Splits splits = instantiator.newInstance(Splits,
+                project.container(ExtendingVersion, { name ->
+                    instantiator.newInstance(ExtendingVersion, name, instantiator)
+                }),
+                project.container(ExtendingVersion, { name ->
+                    instantiator.newInstance(ExtendingVersion, name, instantiator)
+                }))
 
-        extension = project.extensions.create('androidVersion', VersionExtension, instantiator.newInstance(ConstantVersion),
-                project.container(ExtendingVersion), splits)
+        extension = project.extensions.create('androidVersion', VersionExtension,
+                instantiator.newInstance(AppVersion, instantiator),
+                project.container(ExtendingVersion, { name ->
+                    instantiator.newInstance(ExtendingVersion, name, instantiator)
+                }), splits)
     }
 
     private void createTasks() {

@@ -1,6 +1,7 @@
 package si.kamino.gradle.extensions
 
 import org.gradle.api.NamedDomainObjectContainer
+import si.kamino.gradle.extensions.version.ExtendingVersion
 
 class Splits {
 

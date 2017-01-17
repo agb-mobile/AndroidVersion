@@ -1,6 +1,6 @@
-package si.kamino.gradle.extensions
+package si.kamino.gradle.extensions.version
 
-class BaseVersion implements Cloneable {
+class BaseVersion {
 
     public Integer major
     public Integer minor
@@ -16,31 +16,27 @@ class BaseVersion implements Cloneable {
     }
 
     void major(Integer major) {
-        this.major = major;
+        this.major = major
     }
 
     void minor(Integer minor) {
-        this.minor = minor;
+        this.minor = minor
     }
 
     void build(Integer build) {
-        this.build = build;
+        this.build = build
     }
 
     Integer getMajor() {
-        return major;
+        return major
     }
 
     Integer getMinor() {
-        return minor;
+        return minor
     }
 
     Integer getBuild() {
-        return build;
-    }
-
-    BaseVersion clone() {
-        return new BaseVersion(major, minor, build)
+        return build
     }
 
 }

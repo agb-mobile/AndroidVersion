@@ -1,14 +1,16 @@
-package si.kamino.gradle.extensions
+package si.kamino.gradle.extensions.version
+/**
+ * Created by blaz on 1/13/17.
+ */
+class StaticVersion extends BaseVersion implements Cloneable {
 
-class ConstantVersion extends BaseVersion {
+    private int versionCode
 
-    public int versionCode;
-
-    ConstantVersion() {
-        super(0, 0, 0)
+    StaticVersion(Integer major, Integer minor, Integer build) {
+        this(major, minor, build, 0)
     }
 
-    protected ConstantVersion(Integer major, Integer minor, Integer build, int versionCode) {
+    protected StaticVersion(Integer major, Integer minor, Integer build, int versionCode) {
         super(major, minor, build)
         this.versionCode = versionCode
     }
@@ -19,10 +21,6 @@ class ConstantVersion extends BaseVersion {
 
     void versionCode(int versionCode) {
         this.versionCode = versionCode
-    }
-
-    @Override ConstantVersion clone() {
-        return new ConstantVersion(major, minor, build, versionCode)
     }
 
     void apply(ExtendingVersion version) {
@@ -38,15 +36,14 @@ class ConstantVersion extends BaseVersion {
             build = version.build
         }
 
-        def code = version.versionCode
-        if (code) {
-            versionCode = code.call(versionCode)
-        }
-
     }
 
     String getVersionName() {
-        return "$major.$minor.$build"
+        return "$major.${minor}.${build}"
+    }
+
+    @Override StaticVersion clone() {
+        return new StaticVersion(major, minor, build, versionCode)
     }
 
 }
