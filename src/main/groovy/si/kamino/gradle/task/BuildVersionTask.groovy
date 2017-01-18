@@ -45,12 +45,10 @@ class BuildVersionTask extends DefaultTask {
             }
         }
 
-        println variant.name
         applyOutputVersions(extension, variantVersion)
 
-//        Change only output for the time being
-//        variant.getMergedFlavor().versionName = variantVersion.versionName
-//        variant.getMergedFlavor().versionCode = variantVersion.versionCode
+        variant.getMergedFlavor().versionName = variantVersion.versionName
+        variant.getMergedFlavor().versionCode = variantVersion.versionCode
     }
 
     private void applyOutputVersions(VersionExtension extension, StaticVersion variantVersion) {
@@ -58,10 +56,7 @@ class BuildVersionTask extends DefaultTask {
 
             def filters = output.getMainOutputFile().getFilterTypes()
 
-            if (filters.isEmpty()) {
-                output.versionNameOverride = variantVersion.versionName
-                output.versionCodeOverride = variantVersion.versionCode
-            } else {
+            if (!filters.isEmpty()) {
 
                 StaticVersion splitVersion = variantVersion.clone()
 
