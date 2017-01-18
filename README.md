@@ -1,5 +1,14 @@
 # Android Version plugin
 
+Android Version plugin is a gradle plugin that helps managing version for Android projects. Plugin is especially helpful when you are dealing with complex build structure with multiple flavours and apk splits.
+
+## Features
+
+ - Version name and code manipulation
+ - Per flavour & build type version manipulation
+ - Per split version manipulation
+ - Rule based automatic version code calculation
+
 ## Usage
 
 ### Apply plugin
@@ -26,6 +35,7 @@ apply plugin: 'si.kamino.android-version'
 androidVersion {
 
     appVersion {
+        major 1
         versionCode {
             digits 2
         }
@@ -33,14 +43,12 @@ androidVersion {
 
     variants {
         variant1 {
-            major 1
             minor 2
             build 6
         }
 
         variant2 {
-            major 0
-            minor 0
+            minor 5
             build 1
         }
 
@@ -60,6 +68,11 @@ androidVersion {
 ```
 
 #### Version code types
+
+Based on your need you can specify version code tactics that you want to use. By default 
+`appVersion` uses `SimpleVersionCode` tactics but this can easily be changed. Wersion code 
+can tactics can also be changed per variant/split. It can ether modify existing version code
+or specify completely  new value.
 
 `SimpleVersionCode` creates version code from version name parameters (`major`, 'minor' and 'build'). By default 
 each part will take up 2 digits but this is configurable through `digits` parameter.
