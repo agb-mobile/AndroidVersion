@@ -39,7 +39,7 @@ pluginBundle {
 
     plugins {
         soterPlugin {
-            id = 'si.kamino.soter'
+            id = 'si.kamino.version'
             displayName = 'Android Version plugin'
         }
     }
