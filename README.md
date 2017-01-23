@@ -70,7 +70,7 @@ androidVersion {
 #### Version code types
 
 Based on your need you can specify version code tactics that you want to use. By default 
-`appVersion` uses `SimpleVersionCode` tactics but this can easily be changed. Wersion code 
+`appVersion` uses `SimpleVersionCode` tactics but this can easily be changed. Version code 
 can tactics can also be changed per variant/split. It can ether modify existing version code
 or specify completely  new value.
 
