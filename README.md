@@ -71,10 +71,10 @@ androidVersion {
 
 Based on your need you can specify version code tactics that you want to use. By default 
 `appVersion` uses `SimpleVersionCode` tactics but this can easily be changed. Version code 
-can tactics can also be changed per variant/split. It can ether modify existing version code
+tactics can also be changed per variant/split. It can eather modify existing version code
 or specify completely  new value.
 
-- `SimpleVersionCode` creates version code from version name parameters (`major`, 'minor' and 'build'). By default 
+- `SimpleVersionCode` creates version code from version name parameters (`major`, `minor` and `build`). By default 
 each part will take up 2 digits but this is configurable through `digits` parameter.
 - `StaticVersionCode` sets static value defined in `versionCode` parameter.
 - `IncreaseVersionCode` increases previously calculated value by value defined in `by` parameter.
