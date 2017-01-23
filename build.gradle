@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'groovy'
+apply plugin: "com.gradle.plugin-publish"
 
 group projectGroup
 version projectVersion
@@ -29,3 +30,18 @@ dependencies {
     compile localGroovy()
     compile 'com.android.tools.build:gradle:2.3.0-beta2'
 }
+
+pluginBundle {
+    website = POM_URL
+    vcsUrl = POM_SCM_URL
+    description = POM_DESCRIPTION
+    tags = ['android', 'version', 'variants', 'splits']
+
+    plugins {
+        soterPlugin {
+            id = 'si.kamino.soter'
+            displayName = 'Android Version plugin'
+        }
+    }
+}
+
