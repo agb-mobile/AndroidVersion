@@ -3,17 +3,17 @@ package si.kamino.gradle.extensions.version.code
 import org.gradle.api.tasks.Input
 import si.kamino.gradle.extensions.version.StaticVersion
 
-class AddVersionCode implements VersionCode {
+class IncreaseVersionCode implements VersionCode {
 
-    private int add
+    private int by
 
     @Input
     add(int add) {
-        this.add = add
+        this.by = add
     }
 
     @Override
     int buildVersionCode(StaticVersion version) {
-        return version.versionCode + add
+        return version.versionCode + by
     }
 }

@@ -1,12 +1,13 @@
 package si.kamino.gradle.extensions.version.code
 
+import org.gradle.api.tasks.Input
 import si.kamino.gradle.extensions.version.StaticVersion
 
 class SimpleVersionCode implements VersionCode {
 
     private int digits = 2
 
-    void digits(int digits) {
+    @Input void digits(int digits) {
         this.digits = digits
     }
 
