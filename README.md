@@ -22,7 +22,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.0.0"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.0.1"
     }
 }
 
@@ -83,10 +83,10 @@ By default plugin will set `SimpleVersionCode` with digits set to 2.
 
 ## Limitations 
 
-There are some instant run limitations at the moment due to [bug](https://code.google.com/p/android/issues/detail?id=227610) in Android Studio.
+There are some instant run limitations in versions before 2.3.0 of Android Gradle plugin due to [bug](https://code.google.com/p/android/issues/detail?id=227610).
 Due to this issue plugin will be disabled if it detects that it is running under instant run. That means that version name will be empty 
 and version code will be 0. That is ok for tho most cases, if not you can still set version the old way in `android.defaultConfig`.
-When not using instant run that value will be overridden by this plugin.
+When using Android Gradle Plugin 2.3.0 or newer everything works as espected.
 
 ## License 
 

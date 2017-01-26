@@ -1,14 +1,16 @@
 package si.kamino.gradle
 
+import com.android.build.gradle.api.BaseVariant
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.execution.TaskExecutionGraph
 import org.gradle.api.execution.TaskExecutionGraphListener
 import org.gradle.internal.reflect.Instantiator
-import si.kamino.gradle.extensions.version.AppVersion
-import si.kamino.gradle.extensions.version.ExtendingVersion
+import si.kamino.gradle.commons.VersionUtils
 import si.kamino.gradle.extensions.Splits
 import si.kamino.gradle.extensions.VersionExtension
+import si.kamino.gradle.extensions.version.AppVersion
+import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.task.BuildVersionTask
 
 import javax.inject.Inject
@@ -68,21 +70,31 @@ class VersionPlugin implements Plugin<Project> {
 
             variant.getPreBuild().dependsOn versionTask
 
-//            Workaround for instant run issues
-//            https://code.google.com/p/android/issues/detail?id=227610
-            taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
-                @Override
-                void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
-                    versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
-                }
-            })
-
+            skipInstantRunIfNeeded(variant, versionTask)
         }
 
     }
 
     static isAndroidProject(Project project) {
         project.plugins.hasPlugin('com.android.application') || project.plugins.hasPlugin('com.android.library') || project.plugins.hasPlugin('com.android.test')
+    }
+
+    /**
+     * Workaround for pre 2.3.0 version of Android Gradle plugin that was incorrectly handling
+     * overrideVersionCode when running in instant run mode.
+     *
+     * @link https://code.google.com/p/android/issues/detail?id=227610
+     */
+    private void skipInstantRunIfNeeded(BaseVariant variant, BuildVersionTask versionTask) {
+        if (!VersionUtils.is230orAbove()) {
+            taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+                @Override
+                void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
+                    versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
+                }
+            })
+        }
+
     }
 
 }
