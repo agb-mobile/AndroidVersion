@@ -23,7 +23,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.0.1"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.1.0"
     }
 }
 
