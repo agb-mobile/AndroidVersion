@@ -8,6 +8,7 @@ Android Version plugin is a gradle plugin that helps managing version for Androi
  - Per flavour & build type version manipulation
  - Per split version manipulation
  - Rule based automatic version code calculation
+ - Rename apk file name
 
 ## Usage
 
@@ -33,6 +34,8 @@ apply plugin: 'si.kamino.android-version'
 
 ```groovy
 androidVersion {
+
+    fileNamePattern 'sample-$flavours.dimension-$versionName'
 
     appVersion {
         major 1
@@ -71,7 +74,7 @@ androidVersion {
 
 Based on your need you can specify version code tactics that you want to use. By default 
 `appVersion` uses `SimpleVersionCode` tactics but this can easily be changed. Version code 
-tactics can also be changed per variant/split. It can eather modify existing version code
+tactics can also be changed per variant/split. It can ether modify existing version code
 or specify completely  new value.
 
 - `SimpleVersionCode` creates version code from version name parameters (`major`, `minor` and `build`). By default 
@@ -80,6 +83,20 @@ each part will take up 2 digits but this is configurable through `digits` parame
 - `IncreaseVersionCode` increases previously calculated value by value defined in `by` parameter.
 
 By default plugin will set `SimpleVersionCode` with digits set to 2.
+
+#### Output file name
+
+With `fileNamePattern` property you can easily rename out `apk` files. Alongside static values you can specify template
+and plugin will generate the file name. Available properties are:
+ - `project`: name of the project. In case of default Android Studio template that would be `app`.
+ - `variantName`: full unique name of the variant including filters.
+ - `buildType`: build type of the variant
+ - `flavorName`: name of all flavours combined with capitalized latter
+ - `versionCode`: version code of output file including apk splits
+ - `versionName`: version name of output file including apk splits
+ - `flavours` by dimension map of all flavours. (for example: `flavours.dimension`)
+
+`.apk` suffix is automatically added at the end of file name.
 
 ## Limitations 
 

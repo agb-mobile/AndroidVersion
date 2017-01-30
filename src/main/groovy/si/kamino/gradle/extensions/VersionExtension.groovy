@@ -16,7 +16,7 @@ class VersionExtension {
 
     private final Splits splits
 
-    private boolean renameOutputs;
+    private String fileNamePattern
 
     VersionExtension(AppVersion appVersion, NamedDomainObjectContainer<ExtendingVersion> variants,
                      Splits splits) {
@@ -37,8 +37,8 @@ class VersionExtension {
         splits.execute(this.splits)
     }
 
-    def renameOutputs(boolean rename) {
-        this.renameOutputs = rename
+    def fileNamePattern(String pattern) {
+        this.fileNamePattern = pattern
     }
 
     AppVersion getAppVersion() {
@@ -53,7 +53,7 @@ class VersionExtension {
         return splits
     }
 
-    boolean renameOutputs() {
-        return renameOutputs
+    String getFileNamePattern() {
+        return fileNamePattern
     }
 }

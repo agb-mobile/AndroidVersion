@@ -3,16 +3,19 @@ package si.kamino.gradle.task
 import com.android.build.OutputFile
 import com.android.build.gradle.api.BaseVariant
 import com.android.build.gradle.api.BaseVariantOutput
+import groovy.text.SimpleTemplateEngine
+import groovy.text.Template
 import org.gradle.api.DefaultTask
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.tasks.TaskAction
+import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.extensions.version.StaticVersion
-import si.kamino.gradle.extensions.VersionExtension
 
 class BuildVersionTask extends DefaultTask {
 
     private BaseVariant variant
+    private Template fileTemplate
 
     void setVariant(BaseVariant variant) {
         this.variant = variant
@@ -21,6 +24,11 @@ class BuildVersionTask extends DefaultTask {
     @TaskAction void buildVersion() {
 
         VersionExtension extension = project.androidVersion
+
+        if (extension.fileNamePattern) {
+            fileTemplate = new SimpleTemplateEngine().createTemplate(extension.fileNamePattern)
+        }
+
         def appVersion = extension.appVersion
         final StaticVersion variantVersion = new StaticVersion(appVersion.major, appVersion.minor, appVersion.build)
 
@@ -55,10 +63,9 @@ class BuildVersionTask extends DefaultTask {
         variant.outputs.each { output ->
 
             def filters = output.getMainOutputFile().getFilterTypes()
+            StaticVersion splitVersion = variantVersion.clone()
 
             if (!filters.isEmpty()) {
-
-                StaticVersion splitVersion = variantVersion.clone()
 
                 filters.each { split ->
 
@@ -87,6 +94,27 @@ class BuildVersionTask extends DefaultTask {
                 output.versionCodeOverride = splitVersion.versionCode
 
             }
+
+            if (fileTemplate) {
+                def makeMap = [
+                        "project"    : project.name,
+                        "variantName": output.name,
+                        "buildType"  : variant.buildType.name,
+                        "flavorName" : variant.flavorName,
+                        "versionCode": splitVersion.versionCode,
+                        "versionName": splitVersion.versionName,
+                        "flavours"   : variant.productFlavors.collectEntries {
+                            [it.dimension, it.name]
+                        }
+                ]
+
+                def apkName = fileTemplate.make(makeMap)
+
+                if (apkName) {
+                    output.outputFile = new File(output.outputFile.parent, "${apkName}.apk")
+                }
+            }
+
         }
 
     }
@@ -108,4 +136,11 @@ class BuildVersionTask extends DefaultTask {
 
     }
 
+    Template getFileTemplate() {
+        return fileTemplate
+    }
+
+    BaseVariant getVariant() {
+        return variant
+    }
 }
