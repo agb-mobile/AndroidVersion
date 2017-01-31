@@ -7,6 +7,7 @@ Android Version plugin is a gradle plugin that helps managing version for Androi
  - Version name and code manipulation
  - Per flavour & build type version manipulation
  - Per split version manipulation
+ - Multi dimensional flavour version manipulation
  - Rule based automatic version code calculation
  - Rename apk file name
 
