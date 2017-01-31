@@ -3,6 +3,7 @@ package si.kamino.gradle.task
 import com.android.build.OutputFile
 import com.android.build.gradle.api.BaseVariant
 import com.android.build.gradle.api.BaseVariantOutput
+import com.android.builder.model.ProductFlavor
 import groovy.text.SimpleTemplateEngine
 import groovy.text.Template
 import org.gradle.api.DefaultTask
@@ -32,17 +33,13 @@ class BuildVersionTask extends DefaultTask {
         def appVersion = extension.appVersion
         final StaticVersion variantVersion = new StaticVersion(appVersion.major, appVersion.minor, appVersion.build)
 
-        variant.getProductFlavors().each { flavor ->
-            def version = extension.variants.findByName(flavor.name)
-
-            if (version != null) {
-                variantVersion.apply(version)
-            }
-        }
+        applyFlavourVersion(extension, variantVersion)
+        applyBuildTypeVersion(extension, variantVersion)
+        applyVariantCombinationVersion(extension, variantVersion)
 
         variantVersion.versionCode(appVersion.getVersionCode().buildVersionCode(variantVersion))
 
-        variant.getProductFlavors().each { flavor ->
+        variant.productFlavors.each { flavor ->
             def version = extension.variants.findByName(flavor.name)
 
             if (version != null) {
@@ -57,6 +54,45 @@ class BuildVersionTask extends DefaultTask {
 
         variant.getMergedFlavor().versionName = variantVersion.versionName
         variant.getMergedFlavor().versionCode = variantVersion.versionCode
+    }
+
+    private void applyFlavourVersion(VersionExtension extension, final StaticVersion variantVersion) {
+
+        variant.productFlavors.each { flavor ->
+            applyVariantVersion(extension, variantVersion, flavor.name)
+        }
+
+    }
+
+    private void applyBuildTypeVersion(VersionExtension extension, final StaticVersion variantVersion) {
+        applyVariantVersion(extension, variantVersion, variant.buildType.name)
+    }
+
+    private void applyVariantCombinationVersion(VersionExtension extension, final StaticVersion variantVersion) {
+        if (variant.productFlavors.size() > 0) {
+            def variantName
+            variant.productFlavors.eachWithIndex { ProductFlavor flavor, int index ->
+                if (index == 0) {
+                    variantName = flavor.name
+                } else {
+                    variantName = "$variantName${flavor.name.capitalize()}"
+                    applyVariantVersion(extension, variantVersion, variantName)
+                }
+            }
+
+            variantName = "$variantName${variant.buildType.name.capitalize()}"
+            applyVariantVersion(extension, variantVersion, variantName)
+        }
+
+    }
+
+    static void applyVariantVersion(
+            VersionExtension extension, final StaticVersion variantVersion, String variantName) {
+        def version = extension.variants.findByName(variantName)
+
+        if (version != null) {
+            variantVersion.apply(version)
+        }
     }
 
     private void applyOutputVersions(VersionExtension extension, StaticVersion variantVersion) {

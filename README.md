@@ -47,12 +47,18 @@ androidVersion {
     variants {
         variant1 {
             minor 2
-            build 6
         }
 
         variant2 {
             minor 5
+        }
+        
+        debug {
             build 1
+        }
+        
+        variant1Debug {
+            build 3
         }
 
     }
@@ -69,6 +75,13 @@ androidVersion {
 
 }
 ```
+
+#### Flavour combinations
+
+Beside configuring version based on flavours and build types you can also do that on combinations of them when using 
+multiple variant dimensions. Combinations are calculated based on dimension order. For example if you have `flavour1`
+and `flavour2` that are in different dimensions you could do configuration for `flavour1Flavour2` and also 
+`flavour1Flavour2Debug`. If you define both second one will override first one if they have sem properties set.
 
 #### Version code types
 
