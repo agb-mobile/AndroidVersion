@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.2.1 *(2017-01-31)*
+
+ * Typo fixes. ¯\_(ツ)_/¯
+
 ## Version 1.2.0 *(2017-01-31)*
 
  * Adding per build type version configuration.
