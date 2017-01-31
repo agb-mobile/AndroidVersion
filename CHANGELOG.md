@@ -1,6 +1,6 @@
 # Change Log
 
-## Version 1.2.1 *(2017-01-31)*
+## Version 1.2.2 *(2017-01-31)*
 
  * Typo fixes. ¯\_(ツ)_/¯
 
