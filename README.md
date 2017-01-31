@@ -1,13 +1,13 @@
 # Android Version plugin
 
-Android Version plugin is a gradle plugin that helps managing version for Android projects. Plugin is especially helpful when you are dealing with complex build structure with multiple flavours and apk splits.
+Android Version plugin is a gradle plugin that helps managing version for Android projects. Plugin is especially helpful when you are dealing with complex build structure with multiple flavors and apk splits.
 
 ## Features
 
  - Version name and code manipulation
- - Per flavour & build type version manipulation
+ - Per flavor & build type version manipulation
  - Per split version manipulation
- - Multi dimensional flavour version manipulation
+ - Multi dimensional flavor version manipulation
  - Rule based automatic version code calculation
  - Rename apk file name
 
@@ -36,7 +36,7 @@ apply plugin: 'si.kamino.android-version'
 ```groovy
 androidVersion {
 
-    fileNamePattern 'sample-$flavours.dimension-$versionName'
+    fileNamePattern 'sample-$flavors.dimension-$versionName'
 
     appVersion {
         major 1
@@ -77,12 +77,12 @@ androidVersion {
 }
 ```
 
-#### Flavour combinations
+#### Flavor combinations
 
-Beside configuring version based on flavours and build types you can also do that on combinations of them when using 
-multiple variant dimensions. Combinations are calculated based on dimension order. For example if you have `flavour1`
-and `flavour2` that are in different dimensions you could do configuration for `flavour1Flavour2` and also 
-`flavour1Flavour2Debug`. If you define both second one will override first one if they have sem properties set.
+Beside configuring version based on flavors and build types you can also do that on combinations of them when using 
+multiple variant dimensions. Combinations are calculated based on dimension order. For example if you have `flavor1`
+and `flavor2` that are in different dimensions you could do configuration for `flavor1Flavor2` and also 
+`flavor1Flavor2Debug`. If you define both second one will override first one if they have sem properties set.
 
 #### Version code types
 
@@ -105,10 +105,10 @@ and plugin will generate the file name. Available properties are:
  - `project`: name of the project. In case of default Android Studio template that would be `app`.
  - `variantName`: full unique name of the variant including filters.
  - `buildType`: build type of the variant
- - `flavorName`: name of all flavours combined with capitalized latter
+ - `flavorName`: name of all flavors combined with capitalized latter
  - `versionCode`: version code of output file including apk splits
  - `versionName`: version name of output file including apk splits
- - `flavours` by dimension map of all flavours. (for example: `flavours.dimension`)
+ - `flavors` by dimension map of all flavors. (for example: `flavors.dimension`)
 
 `.apk` suffix is automatically added at the end of file name.
 

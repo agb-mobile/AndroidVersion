@@ -3,7 +3,7 @@
 ## Version 1.2.0 *(2017-01-31)*
 
  * Adding per build type version configuration.
- * Adding flavour combination version configuration. [Read more](https://github.com/kaminomobile/AndroidVersion#flavour-combinations)
+ * Adding flavor combination version configuration. [Read more](https://github.com/kaminomobile/AndroidVersion#flavor-combinations)
 
 ## Version 1.1.0 *(2017-01-30)*
 

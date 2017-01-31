@@ -33,7 +33,7 @@ class BuildVersionTask extends DefaultTask {
         def appVersion = extension.appVersion
         final StaticVersion variantVersion = new StaticVersion(appVersion.major, appVersion.minor, appVersion.build)
 
-        applyFlavourVersion(extension, variantVersion)
+        applyFlavorVersion(extension, variantVersion)
         applyBuildTypeVersion(extension, variantVersion)
         applyVariantCombinationVersion(extension, variantVersion)
 
@@ -56,7 +56,7 @@ class BuildVersionTask extends DefaultTask {
         variant.getMergedFlavor().versionCode = variantVersion.versionCode
     }
 
-    private void applyFlavourVersion(VersionExtension extension, final StaticVersion variantVersion) {
+    private void applyFlavorVersion(VersionExtension extension, final StaticVersion variantVersion) {
 
         variant.productFlavors.each { flavor ->
             applyVariantVersion(extension, variantVersion, flavor.name)
@@ -139,7 +139,7 @@ class BuildVersionTask extends DefaultTask {
                         "flavorName" : variant.flavorName,
                         "versionCode": splitVersion.versionCode,
                         "versionName": splitVersion.versionName,
-                        "flavours"   : variant.productFlavors.collectEntries {
+                        "flavors"   : variant.productFlavors.collectEntries {
                             [it.dimension, it.name]
                         }
                 ]
