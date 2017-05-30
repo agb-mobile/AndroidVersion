@@ -1,8 +1,12 @@
 package si.kamino.gradle.commons
 
-public class VersionUtils {
+class VersionUtils {
 
-    public static boolean is230orAbove() {
+    static boolean is300orAbove() {
+        return VersionUtils.versionCompare(com.android.builder.Version.ANDROID_GRADLE_PLUGIN_VERSION, "3.0.0") >= 0;
+    }
+
+    static boolean is230orAbove() {
         return VersionUtils.versionCompare(com.android.builder.Version.ANDROID_GRADLE_PLUGIN_VERSION, "2.3.0") >= 0;
     }
 
