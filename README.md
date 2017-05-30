@@ -24,7 +24,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.2.2"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.2.3"
     }
 }
 
@@ -113,6 +113,9 @@ and plugin will generate the file name. Available properties are:
 `.apk` suffix is automatically added at the end of file name.
 
 ## Limitations 
+
+Due to the changes in Android Gradle plugin 3.0.0, Android version plugin 1.2.3 or above is required. Android version plugin is fully backwards compatible and 
+new version will work with old version of Android gradle plugin.
 
 There are some instant run limitations in versions before 2.3.0 of Android Gradle plugin due to [bug](https://code.google.com/p/android/issues/detail?id=227610).
 Due to this issue plugin will be disabled if it detects that it is running under instant run. That means that version name will be empty 

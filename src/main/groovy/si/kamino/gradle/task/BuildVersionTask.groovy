@@ -9,6 +9,7 @@ import groovy.text.Template
 import org.gradle.api.DefaultTask
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.tasks.TaskAction
+import si.kamino.gradle.commons.VersionUtils
 import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.extensions.version.StaticVersion
@@ -98,7 +99,12 @@ class BuildVersionTask extends DefaultTask {
     private void applyOutputVersions(VersionExtension extension, StaticVersion variantVersion) {
         variant.outputs.each { output ->
 
-            def filters = output.getMainOutputFile().getFilterTypes()
+            def filters;
+            if (VersionUtils.is300orAbove()) {
+                filters = output.getFilterTypes()
+            } else {
+                filters = output.getMainOutputFile().getFilterTypes()
+            }
             StaticVersion splitVersion = variantVersion.clone()
 
             if (!filters.isEmpty()) {
