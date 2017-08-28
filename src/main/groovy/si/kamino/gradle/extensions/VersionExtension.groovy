@@ -20,7 +20,7 @@ class VersionExtension {
 
     VersionExtension(AppVersion appVersion, NamedDomainObjectContainer<ExtendingVersion> variants,
                      Splits splits) {
-        this.appVersion = appVersion;
+        this.appVersion = appVersion
         this.variants = variants
         this.splits = splits
     }

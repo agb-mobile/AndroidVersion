@@ -87,8 +87,8 @@ class BuildVersionTask extends DefaultTask {
 
     }
 
-    static void applyVariantVersion(
-            VersionExtension extension, final StaticVersion variantVersion, String variantName) {
+    static void applyVariantVersion(VersionExtension extension, final StaticVersion variantVersion,
+                                    final String variantName) {
         def version = extension.variants.findByName(variantName)
 
         if (version != null) {
@@ -99,7 +99,7 @@ class BuildVersionTask extends DefaultTask {
     private void applyOutputVersions(VersionExtension extension, StaticVersion variantVersion) {
         variant.outputs.each { output ->
 
-            def filters;
+            def filters
             if (VersionUtils.is300orAbove()) {
                 filters = output.getFilterTypes()
             } else {
@@ -132,10 +132,10 @@ class BuildVersionTask extends DefaultTask {
 
                 }
 
-                output.versionNameOverride = splitVersion.versionName
-                output.versionCodeOverride = splitVersion.versionCode
-
             }
+
+            output.versionNameOverride = splitVersion.versionName
+            output.versionCodeOverride = splitVersion.versionCode
 
             if (fileTemplate) {
                 def makeMap = [
