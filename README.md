@@ -28,7 +28,7 @@ buildscript {
     }
 }
 
-apply plugin: 'si.kamino.android-version'
+apply plugin: "si.kamino.version"
 ```
 
 ### Configuration
