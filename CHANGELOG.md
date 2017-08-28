@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.2.4 *(2017-08-28)*
+
+ * Fixing support for Android gradle plugin 3.0.0 alpha 2.
+
 ## Version 1.2.3 *(2017-05-30)*
 
  * Addng support for Android gradle plugin 3.0.0.
