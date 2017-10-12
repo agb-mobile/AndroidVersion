@@ -2,12 +2,13 @@ package si.kamino.gradle.extensions
 
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
+import org.gradle.api.Project
+import org.gradle.api.model.ObjectFactory
 import si.kamino.gradle.extensions.version.AppVersion
 import si.kamino.gradle.extensions.version.ExtendingVersion
 
-/**
- * Created by blazsolar on 02/09/14.
- */
+import javax.inject.Inject
+
 class VersionExtension {
 
     private final AppVersion appVersion
@@ -18,11 +19,18 @@ class VersionExtension {
 
     private String fileNamePattern
 
-    VersionExtension(AppVersion appVersion, NamedDomainObjectContainer<ExtendingVersion> variants,
-                     Splits splits) {
-        this.appVersion = appVersion
-        this.variants = variants
-        this.splits = splits
+    @Inject
+    VersionExtension(Project project) {
+        ObjectFactory objectFactory = project.objects
+
+        this.appVersion = objectFactory.newInstance(AppVersion, objectFactory)
+
+        def producer = { name -> objectFactory.newInstance(ExtendingVersion, name, objectFactory) }
+        this.variants = project.container(ExtendingVersion, producer)
+
+        this.splits = objectFactory.newInstance(Splits,
+                project.container(ExtendingVersion, producer),
+                project.container(ExtendingVersion, producer))
     }
 
     def appVersion(Action<AppVersion> appVersion) {

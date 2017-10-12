@@ -5,19 +5,14 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.execution.TaskExecutionGraph
 import org.gradle.api.execution.TaskExecutionGraphListener
-import org.gradle.internal.reflect.Instantiator
 import si.kamino.gradle.commons.VersionUtils
-import si.kamino.gradle.extensions.Splits
 import si.kamino.gradle.extensions.VersionExtension
-import si.kamino.gradle.extensions.version.AppVersion
-import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.task.BuildVersionTask
 
 import javax.inject.Inject
 
 class VersionPlugin implements Plugin<Project> {
 
-    private final Instantiator instantiator
     private final TaskExecutionGraph taskExecutionGraph;
 
     private Project project
@@ -25,8 +20,7 @@ class VersionPlugin implements Plugin<Project> {
     private VersionExtension extension
 
     @Inject
-    VersionPlugin(Instantiator instantiator, TaskExecutionGraph taskExecutionGraph) {
-        this.instantiator = instantiator
+    VersionPlugin(TaskExecutionGraph taskExecutionGraph) {
         this.taskExecutionGraph = taskExecutionGraph
     }
 
@@ -36,27 +30,14 @@ class VersionPlugin implements Plugin<Project> {
             throw new IllegalStateException("VersionPlugin only works with Android projects but \"${project.name}\" is none")
         }
 
-        this.project = project;
+        this.project = project
 
         createExtensions()
         createTasks()
     }
 
     private void createExtensions() {
-
-        Splits splits = instantiator.newInstance(Splits,
-                project.container(ExtendingVersion, { name ->
-                    instantiator.newInstance(ExtendingVersion, name, instantiator)
-                }),
-                project.container(ExtendingVersion, { name ->
-                    instantiator.newInstance(ExtendingVersion, name, instantiator)
-                }))
-
-        extension = project.extensions.create('androidVersion', VersionExtension,
-                instantiator.newInstance(AppVersion, instantiator),
-                project.container(ExtendingVersion, { name ->
-                    instantiator.newInstance(ExtendingVersion, name, instantiator)
-                }), splits)
+        extension = project.extensions.create('androidVersion', VersionExtension, project)
     }
 
     private void createTasks() {

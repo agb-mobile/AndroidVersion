@@ -24,7 +24,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.2.5"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.2.6"
     }
 }
 
@@ -93,6 +93,7 @@ or specify completely  new value.
 
 - `SimpleVersionCode` creates version code from version name parameters (`major`, `minor` and `build`). By default 
 each part will take up 2 digits but this is configurable through `digits` parameter.
+- `IncreaseVersionCode` Similar than `SimpleVersionCode` but you can specify digits per each part.
 - `StaticVersionCode` sets static value defined in `versionCode` parameter.
 - `IncreaseVersionCode` increases previously calculated value by value defined in `by` parameter.
 

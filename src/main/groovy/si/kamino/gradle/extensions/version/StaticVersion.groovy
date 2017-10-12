@@ -1,7 +1,5 @@
 package si.kamino.gradle.extensions.version
-/**
- * Created by blaz on 1/13/17.
- */
+
 class StaticVersion extends BaseVersion implements Cloneable {
 
     private int versionCode

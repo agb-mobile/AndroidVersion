@@ -29,7 +29,7 @@ targetCompatibility = JavaVersion.VERSION_1_7
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
-    implementation 'com.android.tools.build:gradle:3.0.0-alpha3'
+    implementation 'com.android.tools.build:gradle:3.0.0-alpha7'
 }
 
 pluginBundle {
@@ -39,10 +39,9 @@ pluginBundle {
     tags = ['android', 'version', 'variants', 'splits']
 
     plugins {
-        soterPlugin {
+        versionPlugin {
             id = 'si.kamino.version'
             displayName = 'Android Version plugin'
         }
     }
 }
-

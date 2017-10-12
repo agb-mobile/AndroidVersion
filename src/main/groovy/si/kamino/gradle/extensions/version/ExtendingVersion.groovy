@@ -1,20 +1,22 @@
 package si.kamino.gradle.extensions.version
 
 import org.gradle.api.Action
-import org.gradle.internal.reflect.Instantiator
 import si.kamino.gradle.extensions.version.code.VersionCode
+
+import javax.inject.Inject
+import javax.naming.spi.ObjectFactory
 
 class ExtendingVersion extends BaseVersion {
 
-    private final Instantiator instantiator;
-
+    private final ObjectFactory objectFactory;
     private final String name
 
     private VersionCode versionCode
 
-    ExtendingVersion(String name, Instantiator instantiator) {
+    @Inject
+    ExtendingVersion(String name, ObjectFactory objectFactory) {
         this.name = name
-        this.instantiator = instantiator
+        this.objectFactory = objectFactory
     }
 
     String getName() {
@@ -26,7 +28,7 @@ class ExtendingVersion extends BaseVersion {
     }
 
     void versionCode(Class<? super VersionCode> aClass, Action<? extends VersionCode> versionCode) {
-        this.versionCode = instantiator.newInstance(aClass)
+        this.versionCode = objectFactory.newInstance(aClass)
         versionCode.execute(this.versionCode)
     }
 

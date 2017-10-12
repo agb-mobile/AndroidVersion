@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 1.3.0 *(2017-10-12)*
+
+ * Adding DigitsVersionCode
+ * Moving away from gradle internal APIs
+
 ## Version 1.2.4 *(2017-08-28)*
 
  * Fixing support for Android gradle plugin 3.0.0 alpha 2.
