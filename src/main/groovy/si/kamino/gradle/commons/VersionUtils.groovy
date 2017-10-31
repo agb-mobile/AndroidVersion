@@ -1,6 +1,12 @@
 package si.kamino.gradle.commons
 
+import org.gradle.api.invocation.Gradle
+
 class VersionUtils {
+
+    static boolean isGradle4_2orAbove(Gradle gradle) {
+        return VersionUtils.versionCompare(gradle.gradleVersion, "4.2") >= 0;
+    }
 
     static boolean is300orAbove() {
         return VersionUtils.versionCompare(com.android.builder.Version.ANDROID_GRADLE_PLUGIN_VERSION, "3.0.0") >= 0;

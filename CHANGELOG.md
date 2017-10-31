@@ -1,6 +1,11 @@
 # Change Log
 
-## Version 1.3.0 *(2017-10-12)*
+## Version 1.2.6 *(2017-10-31)*
+
+ * Fixing splits configuration issues.
+ * Requires Gradle 4.2 or above.
+
+## Version 1.2.6 *(2017-10-12)* **should be 1.3.0 buy was not for some reason :)**
 
  * Adding DigitsVersionCode
  * Moving away from gradle internal APIs

@@ -1,10 +1,10 @@
 package si.kamino.gradle.extensions.version
 
 import org.gradle.api.Action
+import org.gradle.api.model.ObjectFactory
 import si.kamino.gradle.extensions.version.code.VersionCode
 
 import javax.inject.Inject
-import javax.naming.spi.ObjectFactory
 
 class ExtendingVersion extends BaseVersion {
 
