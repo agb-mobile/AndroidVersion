@@ -1,6 +1,6 @@
 # Change Log
 
-## Version 1.2.6 *(2017-10-31)*
+## Version 1.3.1 *(2017-10-31)*
 
  * Fixing splits configuration issues.
  * Requires Gradle 4.2 or above.
