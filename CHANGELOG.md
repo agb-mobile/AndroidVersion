@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.3.2 *(2017-11-10)*
+
+ * Adding support for Android Gradle plugin 3.1.0.
+
 ## Version 1.3.1 *(2017-10-31)*
 
  * Fixing splits configuration issues.
