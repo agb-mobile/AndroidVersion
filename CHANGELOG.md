@@ -3,6 +3,7 @@
 ## Version 1.3.2 *(2017-11-10)*
 
  * Adding support for Android Gradle plugin 3.1.0.
+ * Plugin does no longer bring in Android Gradle plugin dependency.
 
 ## Version 1.3.1 *(2017-10-31)*
 
