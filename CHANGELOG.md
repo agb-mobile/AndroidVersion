@@ -1,6 +1,11 @@
 # Change Log
 
-## Version 1.2.6 *(2017-10-31)*
+## Version 1.3.2 *(2017-11-10)*
+
+ * Adding support for Android Gradle plugin 3.1.0.
+ * Plugin does no longer bring in Android Gradle plugin dependency.
+
+## Version 1.3.1 *(2017-10-31)*
 
  * Fixing splits configuration issues.
  * Requires Gradle 4.2 or above.
