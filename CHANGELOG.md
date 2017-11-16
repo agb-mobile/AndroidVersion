@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.4.0 *(2017-11-16)*
+
+ * Disabled when under instant run.
+
 ## Version 1.3.2 *(2017-11-10)*
 
  * Adding support for Android Gradle plugin 3.1.0.

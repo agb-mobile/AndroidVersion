@@ -66,21 +66,18 @@ class VersionPlugin implements Plugin<Project> {
     }
 
     /**
-     * Workaround for pre 2.3.0 version of Android Gradle plugin that was incorrectly handling
-     * overrideVersionCode when running in instant run mode.
-     *
+     * Workaround Android Gradle plugin that was incorrectly handling overrideVersionCode when running in instant
+     * run mode.
+     * 
      * @link https://code.google.com/p/android/issues/detail?id=227610
      */
     private void skipInstantRunIfNeeded(BaseVariant variant, BuildVersionTask versionTask) {
-        if (!VersionUtils.is230orAbove()) {
-            taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
-                @Override
-                void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
-                    versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
-                }
-            })
-        }
-
+        taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+            @Override
+            void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
+                versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
+            }
+        })
     }
 
 }
