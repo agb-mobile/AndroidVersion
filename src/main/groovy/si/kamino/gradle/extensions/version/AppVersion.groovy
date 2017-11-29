@@ -1,21 +1,19 @@
 package si.kamino.gradle.extensions.version
 
 import org.gradle.api.Action
+import org.gradle.api.Project
 import org.gradle.api.model.ObjectFactory
 import si.kamino.gradle.extensions.version.code.SimpleVersionCode
 import si.kamino.gradle.extensions.version.code.VersionCode
 
-import javax.inject.Inject
-
-class AppVersion extends BaseVersion {
+abstract class AppVersion extends AbsVersion {
 
     private VersionCode versionCode
 
     private final ObjectFactory objectFactory
 
-    @Inject
-    AppVersion(ObjectFactory objectFactory) {
-        this.objectFactory = objectFactory
+    AppVersion(Project project) {
+        this.objectFactory = project.objects
         this.versionCode = objectFactory.newInstance(SimpleVersionCode)
     }
 
