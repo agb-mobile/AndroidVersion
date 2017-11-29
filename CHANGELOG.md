@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.5.0 *(2017-11-29)*
+
+ * Reading version code from properties file
+
 ## Version 1.4.0 *(2017-11-16)*
 
  * Disabled when under instant run.

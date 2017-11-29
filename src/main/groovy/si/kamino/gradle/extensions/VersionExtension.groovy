@@ -6,24 +6,29 @@ import org.gradle.api.Project
 import org.gradle.api.model.ObjectFactory
 import si.kamino.gradle.extensions.version.AppVersion
 import si.kamino.gradle.extensions.version.ExtendingVersion
+import si.kamino.gradle.extensions.version.StaticAppVersion
 
 import javax.inject.Inject
 
 class VersionExtension {
 
-    private final AppVersion appVersion
+    private AppVersion appVersion
 
     private final NamedDomainObjectContainer<ExtendingVersion> variants
 
     private final Splits splits
 
+    private Project project
+    private ObjectFactory objectFactory
+
     private String fileNamePattern
 
     @Inject
     VersionExtension(Project project) {
-        ObjectFactory objectFactory = project.objects
+        this.project = project
+        objectFactory = project.objects
 
-        this.appVersion = objectFactory.newInstance(AppVersion, objectFactory)
+        this.appVersion = objectFactory.newInstance(StaticAppVersion, project)
 
         def producer = { name -> objectFactory.newInstance(ExtendingVersion, name, objectFactory) }
         this.variants = project.container(ExtendingVersion, producer)
@@ -31,6 +36,11 @@ class VersionExtension {
         this.splits = objectFactory.newInstance(Splits,
                 project.container(ExtendingVersion, producer),
                 project.container(ExtendingVersion, producer))
+    }
+
+    void appVersion(Class<? super AppVersion> aClass, Action<? extends AppVersion> versionCodeAction) {
+        this.appVersion = objectFactory.newInstance(aClass, project)
+        appVersion(versionCodeAction)
     }
 
     def appVersion(Action<AppVersion> appVersion) {

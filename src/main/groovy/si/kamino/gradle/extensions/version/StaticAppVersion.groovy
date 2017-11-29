@@ -1,18 +1,18 @@
 package si.kamino.gradle.extensions.version
 
-class BaseVersion extends AbsVersion {
+import org.gradle.api.Project
+
+import javax.inject.Inject
+
+class StaticAppVersion extends AppVersion {
 
     public Integer major
     public Integer minor
     public Integer build
 
-    BaseVersion() {
-    }
-
-    protected BaseVersion(Integer major, Integer minor, Integer build) {
-        this.major = major
-        this.minor = minor
-        this.build = build
+    @Inject
+    StaticAppVersion(Project project) {
+        super(project)
     }
 
     void major(Integer major) {
@@ -41,5 +41,4 @@ class BaseVersion extends AbsVersion {
     Integer getBuild() {
         return build
     }
-
 }
