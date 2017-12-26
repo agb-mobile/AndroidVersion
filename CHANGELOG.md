@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.5.1 *(2017-12-26)*
+
+ * Fix for extending version
+
 ## Version 1.5.0 *(2017-11-29)*
 
  * Reading version code from properties file
