@@ -3,7 +3,6 @@ package si.kamino.gradle.extensions
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
-import org.gradle.api.model.ObjectFactory
 import si.kamino.gradle.extensions.version.AppVersion
 import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.extensions.version.StaticAppVersion
@@ -19,27 +18,25 @@ class VersionExtension {
     private final Splits splits
 
     private Project project
-    private ObjectFactory objectFactory
 
     private String fileNamePattern
 
     @Inject
     VersionExtension(Project project) {
         this.project = project
-        objectFactory = project.objects
 
-        this.appVersion = objectFactory.newInstance(StaticAppVersion, project)
+        this.appVersion = project.objects.newInstance(StaticAppVersion, project)
 
-        def producer = { name -> objectFactory.newInstance(ExtendingVersion, name, objectFactory) }
+        def producer = { name -> project.objects.newInstance(ExtendingVersion, name, project.objects) }
         this.variants = project.container(ExtendingVersion, producer)
 
-        this.splits = objectFactory.newInstance(Splits,
+        this.splits = project.objects.newInstance(Splits,
                 project.container(ExtendingVersion, producer),
                 project.container(ExtendingVersion, producer))
     }
 
     void appVersion(Class<? super AppVersion> aClass, Action<? extends AppVersion> versionCodeAction) {
-        this.appVersion = objectFactory.newInstance(aClass, project)
+        this.appVersion = project.objects.newInstance(aClass, project)
         appVersion(versionCodeAction)
     }
 
@@ -74,4 +71,5 @@ class VersionExtension {
     String getFileNamePattern() {
         return fileNamePattern
     }
+
 }
