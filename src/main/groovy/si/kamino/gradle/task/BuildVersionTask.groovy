@@ -53,8 +53,10 @@ class BuildVersionTask extends DefaultTask {
 
         applyOutputVersions(extension, variantVersion)
 
-        variant.getMergedFlavor().versionName = variantVersion.versionName
-        variant.getMergedFlavor().versionCode = variantVersion.versionCode
+        if (!VersionUtils.is320orAbove()) {
+            variant.getMergedFlavor().versionName = variantVersion.versionName
+            variant.getMergedFlavor().versionCode = variantVersion.versionCode
+        }
     }
 
     private void applyFlavorVersion(VersionExtension extension, final StaticVersion variantVersion) {

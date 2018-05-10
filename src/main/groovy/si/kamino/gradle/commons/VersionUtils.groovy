@@ -8,6 +8,10 @@ class VersionUtils {
         return VersionUtils.versionCompare(gradle.gradleVersion, "4.2") >= 0;
     }
 
+    static boolean is320orAbove() {
+        return VersionUtils.versionCompare(com.android.builder.model.Version.ANDROID_GRADLE_PLUGIN_VERSION, "3.2.0") >= 0;
+    }
+
     static boolean is300orAbove() {
         return VersionUtils.versionCompare(com.android.builder.model.Version.ANDROID_GRADLE_PLUGIN_VERSION, "3.0.0") >= 0;
     }
