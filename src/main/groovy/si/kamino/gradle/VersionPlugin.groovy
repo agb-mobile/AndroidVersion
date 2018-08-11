@@ -72,12 +72,15 @@ class VersionPlugin implements Plugin<Project> {
      * @link https://code.google.com/p/android/issues/detail?id=227610
      */
     private void skipInstantRunIfNeeded(BaseVariant variant, BuildVersionTask versionTask) {
-        taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
-            @Override
-            void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
-                versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
-            }
-        })
+        if (VersionUtils.is330orAbove()) {
+            taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+                @Override
+                void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
+                    versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
+                }
+            })
+
+        }
     }
 
 }
