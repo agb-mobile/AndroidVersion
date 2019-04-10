@@ -8,11 +8,13 @@ import si.kamino.gradle.extensions.version.code.VersionCode
 
 abstract class AppVersion extends AbsVersion {
 
-    private VersionCode versionCode
-
+    private final Project project;
     private final ObjectFactory objectFactory
 
+    private VersionCode versionCode
+
     AppVersion(Project project) {
+        this.project = project
         this.objectFactory = project.objects
         this.versionCode = objectFactory.newInstance(SimpleVersionCode)
     }
@@ -22,7 +24,7 @@ abstract class AppVersion extends AbsVersion {
     }
 
     void versionCode(Class<? super VersionCode> aClass, Action<? extends VersionCode> versionCodeAction) {
-        this.versionCode = objectFactory.newInstance(aClass)
+        this.versionCode = objectFactory.newInstance(aClass, project)
         versionCode(versionCodeAction)
     }
 

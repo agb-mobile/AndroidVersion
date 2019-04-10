@@ -5,6 +5,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.execution.TaskExecutionGraph
 import org.gradle.api.execution.TaskExecutionGraphListener
+import org.gradle.api.tasks.TaskProvider
 import si.kamino.gradle.commons.VersionUtils
 import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.task.BuildVersionTask
@@ -51,12 +52,15 @@ class VersionPlugin implements Plugin<Project> {
 
             String taskName = "version${variant.name.capitalize()}"
 
-            final versionTask = project.tasks.create(taskName, BuildVersionTask)
-            versionTask.setVariant(variant)
+            final versionTaskProvider = project.tasks.register(taskName, BuildVersionTask) {
+                setVariant(variant)
+            }
 
-            variant.getPreBuild().dependsOn versionTask
+            variant.getPreBuildProvider().configure {
+                dependsOn versionTaskProvider
+            }
 
-            skipInstantRunIfNeeded(variant, versionTask)
+            skipInstantRunIfNeeded(variant, versionTaskProvider)
         }
 
     }
@@ -71,13 +75,18 @@ class VersionPlugin implements Plugin<Project> {
      * 
      * @link https://code.google.com/p/android/issues/detail?id=227610
      */
-    private void skipInstantRunIfNeeded(BaseVariant variant, BuildVersionTask versionTask) {
-        taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
-            @Override
-            void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
-                versionTask.enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
-            }
-        })
+    private void skipInstantRunIfNeeded(BaseVariant variant, TaskProvider<BuildVersionTask> versionTaskProvider) {
+        if (!VersionUtils.is330orAbove()) {
+            taskExecutionGraph.addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+                @Override
+                void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
+                    versionTaskProvider.configure {
+                        enabled = !taskExecutionGraph.hasTask("${project.path}:incremental${variant.name.capitalize()}Tasks")
+                    }
+                }
+            })
+
+        }
     }
 
 }
