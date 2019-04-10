@@ -6,7 +6,7 @@ buildscript {
 
     dependencies {
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.0.1"
-        classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+        classpath "com.gradle.publish:plugin-publish-plugin:0.10.1"
     }
 }
 
@@ -20,7 +20,7 @@ apply from: file("maven_push.gradle")
 
 repositories {
     jcenter()
-    maven { url "https://maven.google.com/" }
+    google()
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
@@ -29,7 +29,7 @@ targetCompatibility = JavaVersion.VERSION_1_7
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
-    compileOnly 'com.android.tools.build:gradle:3.3.0-alpha05'
+    compileOnly 'com.android.tools.build:gradle:3.3.2'
 }
 
 pluginBundle {

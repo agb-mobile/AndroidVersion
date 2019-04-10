@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 1.6.0 *(2019-04-10)*
+
+ * Adding support for reading versionCode as separate property in file.
+ * Moving to task providers.
+
 ## Version 1.5.1 *(2017-12-26)*
 
  * Fix for extending version

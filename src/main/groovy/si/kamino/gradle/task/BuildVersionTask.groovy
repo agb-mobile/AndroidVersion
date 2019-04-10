@@ -167,9 +167,9 @@ class BuildVersionTask extends DefaultTask {
 
         NamedDomainObjectContainer<ExtendingVersion> splitContainer
 
-        if (OutputFile.DENSITY.equals(split)) {
+        if (OutputFile.DENSITY == split) {
             splitContainer = extension.splits.density
-        } else if (OutputFile.ABI.equals(split)) {
+        } else if (OutputFile.ABI == split) {
             splitContainer = extension.splits.abi
         } else {
             throw new IllegalStateException("Unknown split type: " + split)
