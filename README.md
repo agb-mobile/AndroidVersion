@@ -24,7 +24,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.5.1"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.7.0"
     }
 }
 

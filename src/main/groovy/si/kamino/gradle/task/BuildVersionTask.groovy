@@ -53,10 +53,10 @@ class BuildVersionTask extends DefaultTask {
 
         applyOutputVersions(extension, variantVersion)
 
-        if (!VersionUtils.is320orAbove()) {
-            variant.getMergedFlavor().versionName = variantVersion.versionName
-            variant.getMergedFlavor().versionCode = variantVersion.versionCode
-        }
+//        if (!VersionUtils.is320orAbove()) {
+//            variant.getMergedFlavor().versionName = variantVersion.versionName
+//            variant.getMergedFlavor().versionCode = variantVersion.versionCode
+//        }
     }
 
     private void applyFlavorVersion(VersionExtension extension, final StaticVersion variantVersion) {
@@ -128,7 +128,7 @@ class BuildVersionTask extends DefaultTask {
                     if (version != null) {
                         def code = version.getVersionCode()
                         if (code) {
-                            splitVersion.versionCode = code.buildVersionCode(splitVersion)
+                            splitVersion.versionCode(code.buildVersionCode(splitVersion))
                         }
                     }
 
@@ -136,7 +136,11 @@ class BuildVersionTask extends DefaultTask {
 
             }
 
-            output.versionNameOverride = splitVersion.versionName
+            def variantSuffix = variant.getMergedFlavor().getVersionNameSuffix()
+            def buildTypeSuffix = variant.buildType.getVersionNameSuffix()
+            def splitVersionName = splitVersion.versionName + (variantSuffix ? variantSuffix : "") + (buildTypeSuffix ? buildTypeSuffix : "")
+
+            output.versionNameOverride = splitVersionName
             output.versionCodeOverride = splitVersion.versionCode
 
             if (fileTemplate) {
@@ -146,7 +150,7 @@ class BuildVersionTask extends DefaultTask {
                         "buildType"  : variant.buildType.name,
                         "flavorName" : variant.flavorName,
                         "versionCode": splitVersion.versionCode,
-                        "versionName": splitVersion.versionName,
+                        "versionName": splitVersionName,
                         "flavors"   : variant.productFlavors.collectEntries {
                             [it.dimension, it.name]
                         }

@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.6.0 *(2019-04-26)*
+
+ * Support for version name suffix.
+
 ## Version 1.6.0 *(2019-04-10)*
 
  * Adding support for reading versionCode as separate property in file.
