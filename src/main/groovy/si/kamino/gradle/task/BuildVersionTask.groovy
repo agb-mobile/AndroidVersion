@@ -11,6 +11,7 @@ import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.tasks.TaskAction
 import si.kamino.gradle.commons.VersionUtils
 import si.kamino.gradle.extensions.VersionExtension
+import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.extensions.version.ExtendingVersion
 import si.kamino.gradle.extensions.version.StaticVersion
 

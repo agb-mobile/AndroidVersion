@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.8.0 *(2020-01-26)*
+
+ * Support for kotlin dsl.
+
 ## Version 1.6.0 *(2019-04-26)*
 
  * Support for version name suffix.
