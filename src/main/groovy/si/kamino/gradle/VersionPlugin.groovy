@@ -35,8 +35,6 @@ class VersionPlugin implements Plugin<Project> {
 
         this.project = project
 
-        println("Has app: ${project.plugins.hasPlugin("com.android.application")}")
-
         def hasAndroidPlugin = false;
         project.plugins.all {
             if (it instanceof AppPlugin) {

@@ -1,6 +1,10 @@
 # Change Log
 
-## Version 1.8.1 *(2020-01-26)*
+## Version 1.8.2 *(2020-01-28)*
+
+ * Removing unnecessary logs.
+
+## Version 1.8.1 *(2020-01-28)*
 
  * Do not require application plugin to be added before version plugin.
  * Plugin does not support library and test plugins any more.
