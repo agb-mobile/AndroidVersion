@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 1.8.1 *(2020-01-26)*
+
+ * Do not require application plugin to be added before version plugin.
+ * Plugin does not support library and test plugins any more.
+ * Warn instead of crash when android application plugin is not present.
+
 ## Version 1.8.0 *(2020-01-26)*
 
  * Support for kotlin dsl.

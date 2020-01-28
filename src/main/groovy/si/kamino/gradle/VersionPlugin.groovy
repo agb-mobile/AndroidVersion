@@ -1,5 +1,6 @@
 package si.kamino.gradle
 
+import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.api.BaseVariant
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -28,18 +29,28 @@ class VersionPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
 
-        if (!isAndroidProject(project)) {
-            throw new IllegalStateException("VersionPlugin only works with Android projects but \"${project.name}\" is none")
-        }
-
         if (!VersionUtils.isGradle4_2orAbove(project.gradle)) {
             throw new IllegalStateException("VersionPlugin requires Gradle 4.2 or above. To use plugin with older versions of gradle downgrade it to 1.2.4.")
         }
 
         this.project = project
 
-        createExtensions()
-        createTasks()
+        println("Has app: ${project.plugins.hasPlugin("com.android.application")}")
+
+        def hasAndroidPlugin = false;
+        project.plugins.all {
+            if (it instanceof AppPlugin) {
+                createExtensions()
+                createTasks()
+                hasAndroidPlugin = true
+            }
+        }
+
+        project.afterEvaluate {
+            if (!hasAndroidPlugin) {
+                project.logger.warn("Android project not present!")
+            }
+        }
     }
 
     private void createExtensions() {
@@ -66,13 +77,13 @@ class VersionPlugin implements Plugin<Project> {
     }
 
     static isAndroidProject(Project project) {
-        project.plugins.hasPlugin('com.android.application') || project.plugins.hasPlugin('com.android.library') || project.plugins.hasPlugin('com.android.test')
+        project.pluginManager.hasPlugin('com.android.application') || project.pluginManager.hasPlugin('com.android.library') || project.pluginManager.hasPlugin('com.android.test')
     }
 
     /**
      * Workaround Android Gradle plugin that was incorrectly handling overrideVersionCode when running in instant
      * run mode.
-     * 
+     *
      * @link https://code.google.com/p/android/issues/detail?id=227610
      */
     private void skipInstantRunIfNeeded(BaseVariant variant, TaskProvider<BuildVersionTask> versionTaskProvider) {
