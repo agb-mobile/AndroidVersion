@@ -1,3 +1,4 @@
+
 # Android Version plugin
 
 Android Version plugin is a gradle plugin that helps managing version for Android projects. Plugin is especially helpful when you are dealing with complex build structure with multiple flavors and apk splits.
@@ -14,6 +15,13 @@ Android Version plugin is a gradle plugin that helps managing version for Androi
 ## Usage
 
 ### Apply plugin
+```groovy
+plugins {
+    id("si.kamino.version")
+}
+```
+
+or
 
 ```groovy
 buildscript {
@@ -24,7 +32,7 @@ buildscript {
     }
 
     dependencies {
-         classpath "gradle.plugin.si.kamino.gradle:android-version:1.7.0"
+         classpath "gradle.plugin.si.kamino.gradle:android-version:1.8.1"
     }
 }
 
