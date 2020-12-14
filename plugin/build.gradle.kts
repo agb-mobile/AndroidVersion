@@ -35,6 +35,7 @@ gradlePlugin {
     val version by plugins.creating {
         id = projectGroup
         implementationClass = "si.kamino.gradle.VersionPlugin"
+        displayName = "Android Version plugin"
     }
 }
 

@@ -5,8 +5,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = "android-version"
+rootProject.name = "android-version-project"
 
 include(":plugin")
 
-project(":plugin").name = "si.kamino.version.gradle.plugin"
+project(":plugin").name = "android-version"
