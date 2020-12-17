@@ -1,0 +1,443 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "si.kamino.gradle.version.example",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-x86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxxhdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxxhdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxxhdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxxhdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-armeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-mdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-arm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-mdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-mdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-x86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "ldpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-ldpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "mdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-mdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "ldpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-ldpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "ldpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-ldpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "ldpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-ldpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxhdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxhdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxhdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xxhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xxhdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-hdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-hdpiX86-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-hdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "hdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-hdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xhdpiX86_64-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xhdpiArm64-v8a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xhdpiArmeabi-v7a-debug.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        },
+        {
+          "filterType": "DENSITY",
+          "value": "xhdpi"
+        }
+      ],
+      "versionCode": 1,
+      "versionName": "1",
+      "outputFile": "android-version-example-xhdpiX86-debug.apk"
+    }
+  ]
+}

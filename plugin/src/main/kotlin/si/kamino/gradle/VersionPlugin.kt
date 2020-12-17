@@ -2,12 +2,11 @@ package si.kamino.gradle
 
 import com.android.build.api.artifact.ArtifactType
 import com.android.build.api.artifact.Artifacts
-import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.extension.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.AppPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.TaskProvider
-import si.kamino.gradle.common.VersionUtil
 import si.kamino.gradle.extensions.VersionExtension
 import si.kamino.gradle.task.CalculateVariantVersionTask
 import si.kamino.gradle.task.ManifestVersionTransformationTask
@@ -16,11 +15,6 @@ import java.io.File
 class VersionPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-
-        if (!VersionUtil.is410OrAbove()) {
-            throw IllegalStateException("VersionPlugin requires Android Gradle Plugin 4.1 or above. To use plugin with older versions of gradle downgrade it to version 1.x.x of this plugins.")
-        }
-
         var hasAndroidAppPlugin = false
         project.plugins.all {
             if (it is AppPlugin) {
@@ -43,27 +37,28 @@ class VersionPlugin : Plugin<Project> {
     }
 
     private fun createTasks(project: Project) {
-        val androidExtension = project.extensions.findByName("android") as ApplicationExtension<*, *, *, *, *>
+        val components = project.extensions.findByName("androidComponents") as ApplicationAndroidComponentsExtension
 
-        androidExtension.onVariantProperties {
-            val taskName = "version${name.capitalize()}"
+        components.onVariants { variant ->
+            val taskName = "version${variant.name.capitalize()}"
             val versionTask = project.tasks.register(taskName, CalculateVariantVersionTask::class.java) {
-                it.productFlavors.set(productFlavors)
-                it.buildType.set(buildType)
+                it.productFlavors.set(variant.productFlavors)
+                it.buildType.set(variant.buildType)
                 it.versionExtension.set(project.extensions.findByType(VersionExtension::class.java)!!)
-                it.versionOutputFile.set(File(project.buildDir, "intermediates/version/$name"))
+                it.versionOutputFile.set(File(project.buildDir, "intermediates/version/${variant.name}"))
             }
 
-            val manifestUpdater = project.tasks.register("${taskName}ManifestUpdater", ManifestVersionTransformationTask::class.java) {
-                    it.versionFile.set(versionTask.flatMap {
-                        it.versionOutputFile
-                    })
-                }
+            val manifestUpdater = project.tasks.register(
+                "${taskName}ManifestUpdater",
+                ManifestVersionTransformationTask::class.java
+            ) {
+                it.versionFile.set(versionTask.flatMap {
+                    it.versionOutputFile
+                })
+            }
 
-            setupMerger(artifacts, manifestUpdater)
-
+            setupMerger(variant.artifacts, manifestUpdater)
         }
-
     }
 
     private fun setupMerger(artifacts: Artifacts, manifestUpdater: TaskProvider<ManifestVersionTransformationTask>) {

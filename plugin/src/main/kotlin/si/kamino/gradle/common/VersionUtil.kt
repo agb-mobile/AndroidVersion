@@ -2,12 +2,8 @@ package si.kamino.gradle.common
 
 object VersionUtil {
 
-    fun is410OrAbove(): Boolean {
-        return versionCompare(com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION, "4.1.0") >= 0
-    }
-
     private fun versionCompare(str1: String, str2: String): Int {
-        val vals1: List<String> = str1.split("-")[0].split(".")
+        val vals1: List<String> = str1.removePrefix("version ").split("-")[0].split(".")
         val vals2: List<String> = str2.split("-")[0].split(".")
         var i = 0
         // set index to first non-equal ordinal or length of shortest version string

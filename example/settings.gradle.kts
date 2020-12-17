@@ -8,14 +8,15 @@ pluginManagement {
     plugins {
         kotlin("jvm") version "1.4.21"
         kotlin("android") version "1.4.21"
-        id("com.android.application") version "4.1.1"
-        id("si.kamino.version") version "2.0.0-SNAPSHOT"
+        id("com.android.application") version "7.0.0-alpha03"
+        id("si.kamino.version") version "2.0.1-SNAPSHOT"
     }
 
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "com.android.application" -> useModule("com.android.tools.build:gradle:4.1.1")
+                "com.android.application" -> useModule("com.android.tools.build:gradle:7.0.0-alpha03")
+                "si.kamino.version" -> useModule("si.kamino.gradle:android-version:2.0.1-SNAPSHOT")
             }
         }
     }

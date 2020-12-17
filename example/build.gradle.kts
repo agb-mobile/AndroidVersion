@@ -26,7 +26,6 @@ android {
 
     }
 
-    generatePureSplits = true
     splits {
         abi {
             isEnable = true

@@ -1,0 +1,85 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "si.kamino.gradle",
+    "module": "android-version",
+    "version": "2.0.1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.7.1",
+      "buildId": "lfwydku2gvfi5cbs2dyk4hywoy"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "android-version-2.0.1-SNAPSHOT.jar",
+          "url": "android-version-2.0.1-SNAPSHOT.jar",
+          "size": 38727,
+          "sha512": "7881b12a21c992871bdedf1f0f79eab8554c5230ab09dc94f444d204ee20b792efa1055bc171b1589a882f08b61de26ee5c4606a393f7ac3075a476cf0e24f7c",
+          "sha256": "0ac0aac3c41966b04949a99f80c9d2125f7dfecf85469df468780e63ce6808c9",
+          "sha1": "958576f338f208aa5509fcafa9774e61e416fe46",
+          "md5": "05da220c178d8d6a002ac48329343929"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-bom",
+          "version": {
+            "requires": "1.4.21"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.4.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "android-version-2.0.1-SNAPSHOT.jar",
+          "url": "android-version-2.0.1-SNAPSHOT.jar",
+          "size": 38727,
+          "sha512": "7881b12a21c992871bdedf1f0f79eab8554c5230ab09dc94f444d204ee20b792efa1055bc171b1589a882f08b61de26ee5c4606a393f7ac3075a476cf0e24f7c",
+          "sha256": "0ac0aac3c41966b04949a99f80c9d2125f7dfecf85469df468780e63ce6808c9",
+          "sha1": "958576f338f208aa5509fcafa9774e61e416fe46",
+          "md5": "05da220c178d8d6a002ac48329343929"
+        }
+      ]
+    }
+  ]
+}
