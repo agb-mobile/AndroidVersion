@@ -11,13 +11,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.android.tools.build:gradle:4.2.0-beta02")
+    compileOnly("com.android.tools.build:gradle:4.2.0")
 
     implementation(gradleApi())
     implementation(localGroovy())
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")

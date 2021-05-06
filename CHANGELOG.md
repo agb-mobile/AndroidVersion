@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 2..1.1 *(2021-5-6)*
+
+ * Gradle 7 support.
+
 ## Version 1.8.2 *(2020-01-28)*
 
  * Removing unnecessary logs.
@@ -8,7 +12,7 @@
 
  * Do not require application plugin to be added before version plugin.
  * Plugin does not support library and test plugins any more.
- * Warn instead of crash when android application plugin is not present.
+ * Warn instead of crash when android application plugin is not present.4
 
 ## Version 1.8.0 *(2020-01-26)*
 
