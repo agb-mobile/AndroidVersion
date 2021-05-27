@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/blaz/Documents/workspace/kamino/gradle/AndroidVersion/example/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h480dp-land-v13/values-h480dp-land-v13.xml",
+            "outputFile": "/Users/gasperkojek/Projects/Kamino/AndroidVersion/example/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h480dp-land-v13/values-h480dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/Users/blaz/.gradle/caches/transforms-3/84a2c420317909efb30c833229fa8a8b/transformed/material-1.2.1/res/values-h480dp-land-v13/values-h480dp-land-v13.xml",
+                    "source": "/Users/gasperkojek/.gradle/caches/transforms-3/f90cb8b03a4a3e9453af8dc9ddc9cc21/transformed/material-1.3.0/res/values-h480dp-land-v13/values-h480dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

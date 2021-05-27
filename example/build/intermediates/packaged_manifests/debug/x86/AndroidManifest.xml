@@ -10,7 +10,8 @@
 
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-        android:debuggable="true" >
+        android:debuggable="true"
+        android:testOnly="true" >
         <activity
             android:name="si.kamino.gradle.version.example.MainActivity"
             android:label="@string/title_activity_main"

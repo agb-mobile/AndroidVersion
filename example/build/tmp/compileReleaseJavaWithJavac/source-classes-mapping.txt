@@ -1,2 +1,0 @@
-si/kamino/gradle/version/example/BuildConfig.java
- si.kamino.gradle.version.example.BuildConfig
