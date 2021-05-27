@@ -1,0 +1,4 @@
+#Thu Dec 17 09:10:42 CET 2020
+base.0=/Users/blaz/Documents/workspace/kamino/gradle/AndroidVersion/example/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

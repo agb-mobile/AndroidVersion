@@ -2,7 +2,7 @@
 
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30"/>
 
-    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:testOnly="true">
+    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true">
         <activity android:label="@string/title_activity_main" android:name="si.kamino.gradle.version.example.MainActivity" android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
