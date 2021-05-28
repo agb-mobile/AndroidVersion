@@ -1,6 +1,10 @@
 # Change Log
 
-## Version 2..1.1 *(2021-5-6)*
+## Version 2.1.2 *(2021-5-27)*
+
+ * AGP 7.0.0-beta02 support.
+
+## Version 2.1.1 *(2021-5-6)*
 
  * Gradle 7 support.
 
