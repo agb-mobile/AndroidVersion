@@ -33,7 +33,7 @@ class VersionPlugin : Plugin<Project> {
     }
 
     private fun createExtensions(project: Project): VersionExtension {
-        return project.extensions.create("androidVersion", VersionExtension::class.java, project)
+        return project.extensions.create("androidVersion", VersionExtension::class.java, project.objects)
     }
 
     private fun createTasks(project: Project) {
