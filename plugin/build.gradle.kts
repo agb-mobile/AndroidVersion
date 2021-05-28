@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.android.tools.build:gradle:4.2.0")
+    compileOnly("com.android.tools.build:gradle:7.0.0-beta02")
 
     implementation(gradleApi())
     implementation(localGroovy())
