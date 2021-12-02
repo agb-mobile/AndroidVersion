@@ -10,20 +10,33 @@ abstract class FileVersion @Inject constructor(objects: ObjectFactory) : AbsVers
     @get:InputFile
     val file: RegularFileProperty = objects.fileProperty()
 
-    private val properties = lazy {
+    // Note: can't use lazy {}, as it still gets evaluated in configuration time because of configuration cache / inputs change detection.
+    private var properties: LinkedHashMap<String, String>? = null
+
+    private fun readProperties(): LinkedHashMap<String, String> {
         // Make it nicer!
-        file.get().asFile.readLines()
+        return file.get().asFile.readLines()
             .map { it.split("=") }
             .map { it.first() to it.last() }
             .toMap(LinkedHashMap())
+            .also {
+                println("FileVersion read properties: $it")
+            }
+    }
+
+    private fun requireProperties(): LinkedHashMap<String, String> {
+        if (properties == null) {
+            properties = readProperties()
+        }
+        return properties!!
     }
 
     override fun getKeys(): Set<String> {
-        return properties.value.keys
+        return requireProperties().keys
     }
 
     override fun getValue(key: String): Int {
-        return (properties.value[key] as String).toInt()
+        return (requireProperties()[key] as String).toInt()
     }
 
 }
