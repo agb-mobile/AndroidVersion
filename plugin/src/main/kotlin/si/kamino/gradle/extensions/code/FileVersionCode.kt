@@ -22,9 +22,6 @@ abstract class FileVersionCode @Inject constructor(objects: ObjectFactory) : Bas
             .filter { it.first == "version.code" }
             .first().second
             .toInt()
-            .also {
-                println("FileVersionCode read file, code: $it")
-            }
     }
 
     override fun getVersionCode(versionName: StaticVersion): Int {

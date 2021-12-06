@@ -19,9 +19,6 @@ abstract class FileVersion @Inject constructor(objects: ObjectFactory) : AbsVers
             .map { it.split("=") }
             .map { it.first() to it.last() }
             .toMap(LinkedHashMap())
-            .also {
-                println("FileVersion read properties: $it")
-            }
     }
 
     private fun requireProperties(): LinkedHashMap<String, String> {
