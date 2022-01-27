@@ -1,5 +1,21 @@
 # Change Log
 
+## Version 3.2.0
+
+Updated to Kotlin 1.6.10 and AGP 7.1.0
+
+## Version 3.1.0
+
+Made actual reading of files run in execution time instead of configuration time (even with lazy {}). Bumped gradle to 7.3.1 and AGP to 7.0.3.
+
+## Version 3.0.3
+
+Bumped AGP version to stable 7.0.2 and kotlin to 1.5.30
+
+## Version 3.0.2
+
+Added support for gradle config cache and updated example project to use it. This meant that tasks must not use project (as well as other stuff) in execution time.
+
 ## Version 2.1.2 *(2021-5-27)*
 
  * AGP 7.0.0-beta02 support.

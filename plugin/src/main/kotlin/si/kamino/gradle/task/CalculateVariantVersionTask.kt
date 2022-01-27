@@ -73,7 +73,7 @@ abstract class CalculateVariantVersionTask : DefaultTask() {
                     applyVariantVersion(versionExtension, variantVersion, variantName)
                 }
             }
-            // TODO when could build type ve null?
+            // TODO when could build type be null?
             variantName = "$variantName${buildType.get()!!.capitalize()}"
             applyVariantVersion(versionExtension, variantVersion, variantName)
         }
