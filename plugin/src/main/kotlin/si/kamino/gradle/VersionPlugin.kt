@@ -2,7 +2,7 @@ package si.kamino.gradle
 
 import com.android.build.api.artifact.Artifacts
 import com.android.build.api.artifact.SingleArtifact
-import com.android.build.api.extension.ApplicationAndroidComponentsExtension
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.AppPlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -43,7 +43,7 @@ class VersionPlugin : Plugin<Project> {
             val taskName = "version${variant.name.capitalize()}"
             val versionTask = project.tasks.register(taskName, CalculateVariantVersionTask::class.java) {
                 it.productFlavors.set(variant.productFlavors)
-                it.buildType.set(variant.buildType)
+                it.buildType.set(variant.buildType!!)
                 it.versionExtension.set(project.extensions.findByType(VersionExtension::class.java)!!)
                 it.versionOutputFile.set(File(project.buildDir, "intermediates/version/${variant.name}"))
             }

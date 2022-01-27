@@ -1,6 +1,6 @@
 pluginManagement {
     plugins {
-        kotlin("jvm") version "1.5.32"
+        kotlin("jvm") version "1.6.10"
         id("com.gradle.plugin-publish") version "0.15.0"
     }
 }
